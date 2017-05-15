@@ -1,0 +1,33 @@
+<div class="my-form col-sm-8" [style.width.%]="70">
+  <form [formGroup]="competitorForm" class="form-horizontal" (ngSubmit)="save(competitorForm.value)" id="competitor-form" autocomplete="off" novalidate>
+      <input type="hidden" [value]="competitor?.id" formControlName="competitorId" id="competitorId" class="form-control"/>
+      <div class="form-group" [class.error]="competitorForm.controls.competitorName?.invalid && competitorForm.controls.competitorName?.touched">
+        <label for="competitorName" class="control-label col-sm-2">name:</label>
+        
+        <div class="col-sm-4">
+        <input formControlName="competitorName" required id="competitorName" type="text" class="form-control" placeholder="John Doe" />
+        </div>
+          <!--<em class="error" *ngIf="competitorForm.controls.competitorName?.invalid && competitorForm.controls.competitorName?.touched">Required</em>-->
+        
+      </div>
+      <div class="form-group" [class.error]="competitorForm.controls.competitorResult?.invalid && competitorForm.controls.competitorResult?.touched">
+        <label for="competitorResult" class="control-label col-sm-2">Result:</label>
+        
+        <div class="col-sm-4">
+        <input formControlName="competitorResult" required id="competitorResult" type="number" class="form-control" placeholder="23.78" />
+        </div>
+          <!--<em class="error" *ngIf="competitorForm.controls.competitorResult?.invalid && competitorForm.controls.competitorResult?.touched">Required</em>-->
+        
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-4">
+          <button [style.float]="right" (click)="clearControls()" [disabled]="competitorForm.untouched" class="btn btn-default">Clear fields</button>
+          <button type="submit" [style.float]="right" [disabled]="competitorForm.invalid" class="btn btn-primary">{{buttonText}}</button> 
+        </div>
+       
+      </div>
+  </form>
+</div>
+
+
+

@@ -1,0 +1,45 @@
+<div class="col-sm-5">
+  <h3 *ngIf="!edit">Full Ranking list <small>({{competitors.length}} competitors)</small></h3>
+  <h3 *ngIf="edit">Full list <small>({{competitors.length}} competitors)</small></h3>
+  <table class="table table-hover table-responsive" [style.margin.em]="1.5">
+    <thead>
+      <tr>
+        <th *ngIf="!edit">Position</th>
+        <th>Competitor name</th>
+        <th>Competitor result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let competitor of competitors, let i = index">
+        <td *ngIf="!edit">{{i+1}}</td>
+        <td>{{competitor.name}}</td>
+        <td>{{competitor.timeResult}}</td>
+        <td *ngIf="edit">
+          <button type="button" class="btn btn-default" aria-label="Left Align" (click)="notifySelected(competitor)">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="col-sm-5 col-sm-offset-1" *ngIf="!edit">
+  <h3>Five ones <span class="glyphicon glyphicon-fire" style="color:red;" aria-hidden="true"></span></h3>
+  <table class="table table-condensed table-hover table-responsive" [style.margin.em]="1.5">
+    <thead>
+      <tr>
+        <th>Competitor name</th>
+        <th>Competitor result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let competitor of five_competitors">
+        <td>{{competitor.name}}</td>
+        <td>{{competitor.timeResult}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

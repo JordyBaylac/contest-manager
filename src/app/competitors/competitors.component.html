@@ -1,0 +1,11 @@
+<div class="row">
+    <create-competitor [competitor]="competitorEditing" (onSaveEvent)="saveCompetitor($event)" (onEditEvent)="saveEditedCompetitor($event)"></create-competitor>
+</div>
+<div class="row">
+    <div class="col-sm-offset-6 col-sm-6">
+        <button [style.margin-left.em]=2 (click)="exportToPdf()" class="btn btn-info">Export to pdf</button>
+        <button [style.margin-left.em]=2 (click)="exportToPdf(true)" class="btn btn-info">Export Ranking list to pdf</button>
+    </div>
+</div>
+<hr/>
+<competitor-list (onEdit)='editingCompetitor($event)' [edit]="true" [competitors]="competitors"></competitor-list>
